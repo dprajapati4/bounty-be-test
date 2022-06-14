@@ -38,20 +38,17 @@ const fetchData = (query) => __awaiter(void 0, void 0, void 0, function* () {
 });
 const removeDuplicates = (query) => {
     const queryArr = query.split(',');
-    console.log('remove', queryArr);
     const uniqueQueries = [];
     queryArr.forEach((query) => {
         if (!uniqueQueries.includes(query)) {
             uniqueQueries.push(query);
         }
-        console.log('sfter', uniqueQueries);
     });
     return uniqueQueries;
 };
 //https://pokeapi.co/api/v2/pokemon/{id or name}/
 app.get('/pokemon-details', (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const pokemon = req.query.pokemon;
-    console.log('pokemon', removeDuplicates(pokemon));
     try {
         const data = yield fetchData(pokemon);
         res.send(data);

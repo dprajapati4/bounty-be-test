@@ -34,13 +34,11 @@ const fetchData = async (query: any) => {
 
 const removeDuplicates = (query: any) => {
   const queryArr: Array<string> = query.split(',')
-  console.log('remove', queryArr)
   const uniqueQueries: any = [];
   queryArr.forEach((query: any) => {
     if (!uniqueQueries.includes(query)) {
       uniqueQueries.push(query);
     }
-    console.log('sfter', uniqueQueries)
   });
   return uniqueQueries
 }
@@ -48,7 +46,6 @@ const removeDuplicates = (query: any) => {
 //https://pokeapi.co/api/v2/pokemon/{id or name}/
 app.get('/pokemon-details', async (req: Request, res: Response, next: NextFunction) => {
   const pokemon = req.query.pokemon
-  console.log('pokemon', removeDuplicates(pokemon))
   try {
     const data = await fetchData(pokemon)
     res.send(data)
